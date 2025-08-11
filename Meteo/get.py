@@ -1,0 +1,97 @@
+# https://www.ecmwf.int/sites/default/files/elibrary/2015/18490-radiation-quantities-ecmwf-model-and-mars.pdf
+#
+# ssrd: Surface Solar Radiation Downwards
+# ssr: Surface net Solar Radiation
+# strd: Surface Thermal Radiation Downwards
+# str: Surface net Thermal Radiation
+
+import cdsapi
+
+dataset = "reanalysis-era5-single-levels"
+request = {
+    "product_type": ["reanalysis"],
+    "variable": [
+        #        "clear_sky_direct_solar_radiation_at_surface",
+        ## "instantaneous_surface_sensible_heat_flux",
+        #        "surface_latent_heat_flux",
+        "surface_net_solar_radiation",
+        #        "surface_net_solar_radiation_clear_sky",
+        ##"surface_net_thermal_radiation",
+        #        "surface_net_thermal_radiation_clear_sky",
+        ## "surface_sensible_heat_flux",
+        #        "surface_solar_radiation_downward_clear_sky",
+        ##surface_solar_radiation_downwards",
+        #        "surface_thermal_radiation_downward_clear_sky",
+        ## "surface_thermal_radiation_downwards",
+        #        "total_sky_direct_solar_radiation_at_surface",
+    ],
+    # "year": ["2020", "2021"],
+    "year": ["2022", "2023"],
+    # "year": ["2020", "2021", "2022", "2023"],
+    "month": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+    "day": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+    ],
+    "time": [
+        "00:00",
+        "01:00",
+        "02:00",
+        "03:00",
+        "04:00",
+        "05:00",
+        "06:00",
+        "07:00",
+        "08:00",
+        "09:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00",
+        "18:00",
+        "19:00",
+        "20:00",
+        "21:00",
+        "22:00",
+        "23:00",
+    ],
+    "data_format": "netcdf",
+    "download_format": "zip",
+    "area": [59, 12, 58, 13],
+}
+
+client = cdsapi.Client()
+client.retrieve(dataset, request).download()
