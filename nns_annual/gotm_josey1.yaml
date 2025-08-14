@@ -11,7 +11,7 @@ location:
 time:
   start: 2020-01-01 00:00:00 # start date and time [yyyy-mm-dd HH:MM:SS; default=2017-01-01 00:00:00]
   stop: 2020-02-01 00:00:00 # stop date and time [yyyy-mm-dd HH:MM:SS; default=2018-01-01 00:00:00]
-  stop: 2020-12-31 18:00:00 # stop date and time [yyyy-mm-dd HH:MM:SS; default=2018-01-01 00:00:00]
+  stop: 2023-12-31 18:00:00 # stop date and time [yyyy-mm-dd HH:MM:SS; default=2018-01-01 00:00:00]
   dt: 3600.0 # time step for integration [s; min=0.0; default=3600.0]
 grid:
   nlev: 110 # number of layers [min=1; default=100]
@@ -113,7 +113,7 @@ surface:
     file: # path to file with time series [default=]
     column: 1 # index of column to read from [default=1]
   longwave_radiation: # net longwave radiation [W/m^2]
-    method: clark # method [constant, file=from file, clark=Clark et al. (1974), hastenrath_lamb=Hastenrath and Lamb (1978), bignami=Bignami et al. (1995), berliand_berliand=Berliand and Berliand (1952), josey1=Josey et al. (2003) - 1, josey2=Josey et al. (2003) - 2; default=clark]
+    method: josey1 # method [constant, file=from file, clark=Clark et al. (1974), hastenrath_lamb=Hastenrath and Lamb (1978), bignami=Bignami et al. (1995), berliand_berliand=Berliand and Berliand (1952), josey1=Josey et al. (2003) - 1, josey2=Josey et al. (2003) - 2; default=clark]
     constant_value: 0.0 # value to use throughout the simulation [W/m^2; default=0.0]
     file: Meteo/str.dat # path to file with time series [default=]
     column: 1 # index of column to read from [default=1]
@@ -388,7 +388,7 @@ seagrass: # calculate seagrass effect on turbulence
 restart:
   load: false # initialize simulation with state stored in restart.nc [default=false]
 output:
-  nns_annual: # path of output file, excluding extension
+  nns_josey1: # path of output file, excluding extension
     time_unit: hour # time unit [second, hour, day, month, year, dt=model time step; default=day]
     time_step: 1 # number of time units between output [min=1; default=1]
     time_method: point # treatment of time dimension [point=instantaneous, mean, integrated; default=point]
