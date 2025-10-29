@@ -114,11 +114,11 @@ surface:
     column: 1 # index of column to read from [default=1]
     type: 1 # shortwave type from file [1=net shortwave radiation, 2=downward shortwave radiation; default=1]
   longwave_radiation: # net longwave radiation [W/m^2]
-    method: file # method [constant, file=from file, clark=Clark et al. (1974), hastenrath_lamb=Hastenrath and Lamb (1978), bignami=Bignami et al. (1995), berliand_berliand=Berliand and Berliand (1952), josey1=Josey et al. (2003) - 1, josey2=Josey et al. (2003) - 2; default=clark]
+    method: hastenrath_lamb # method [constant, file=from file, clark=Clark et al. (1974), hastenrath_lamb=Hastenrath and Lamb (1978), bignami=Bignami et al. (1995), berliand_berliand=Berliand and Berliand (1952), josey1=Josey et al. (2003) - 1, josey2=Josey et al. (2003) - 2; default=clark]
     constant_value: 0.0 # value to use throughout the simulation [W/m^2; default=0.0]
-    file: Meteo/strd.dat # path to file with time series [default=]
+    file: Meteo/str.dat # path to file with time series [default=]
     column: 1 # index of column to read from [default=1]
-    type: 2 # longwave type from file [1=net longwave radiation, 2=downward longwave radiation; default=1]
+    type: 1 # longwave type from file [1=net longwave radiation, 2=downward longwave radiation; default=1]
   albedo:
     method: payne # method to compute albedo [constant, payne=Payne (1972), cogley=Cogley (1979); default=payne]
     constant_value: 0.0 # constant value to use throughout the simulation [fraction; min=0.0; max=1.0; default=0.0]
@@ -389,7 +389,7 @@ seagrass: # calculate seagrass effect on turbulence
 restart:
   load: false # initialize simulation with state stored in restart.nc [default=false]
 output:
-  nns_ssr_strd: # path of output file, excluding extension
+  nns_ssr_hastenrath_lamb: # path of output file, excluding extension
     time_unit: hour # time unit [second, hour, day, month, year, dt=model time step; default=day]
     time_step: 1 # number of time units between output [min=1; default=1]
     time_method: point # treatment of time dimension [point=instantaneous, mean, integrated; default=point]
